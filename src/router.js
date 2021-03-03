@@ -11,19 +11,31 @@ import {MainPage} from "./Components/MainPage";
 import {Container, Nav} from "react-bootstrap";
 import CatalogBlock from "./Components/Catalog";
 import {CustomNavBar} from "./Components/CustomNavBar";
+import {observer} from "mobx-react";
+import appStore from "./store";
+import Redirect from "react-router-dom/es/Redirect";
+
+const CheckAuth = observer((props) => {
+    if(appStore.authToken) return props.children;
+
+    return <Redirect to="/login"/>
+})
+
 
 export const BaseRouter = () => {
     return (
         <Router>
-            <NaviBar />
-            <CustomNavBar/>
-            <div>
-                <Route exact path="/" component={MainPage}/>
-                <Route path="/api" component={()=><MainBlock endpoints={[{placeholder: 'qwe'}]}/>}/>
-                <Route path="/catalog" component={()=><CatalogBlock items={[{title: "qwe", description: 'qwe'}]}/>}/>
-                <Route path="/signup" component={SignUpWindow}/>
-                <Route path="/login" component={SignInWindow}/>
-            </div>
+            <Route path="/signup" component={SignUpWindow}/>
+            <Route path="/login" component={SignInWindow}/>
+            <CheckAuth>
+                <NaviBar />
+                <CustomNavBar/>
+                <div>
+                    <Route exact path="/" component={MainPage}/>
+                    <Route path="/api" component={()=><MainBlock endpoints={[{placeholder: 'qwe'}]}/>}/>
+                    <Route path="/catalog" component={()=><CatalogBlock items={[{title: "qwe", description: 'qwe'}]}/>}/>
+                </div>
+            </CheckAuth>
         </Router>
     )
 }

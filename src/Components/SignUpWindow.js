@@ -1,9 +1,17 @@
-
-
 import React from 'react';
 import { Container } from 'react-bootstrap';
 import { Form, Col, Button, Modal } from "react-bootstrap";
-export default function SignUpWindow() {
+import {getFormData} from "../utils/getFormData";
+import withRouter from "react-router-dom/es/withRouter";
+import appStore from "../store";
+const SignUpWindow = (props) => {
+
+	const onRegisterHandler = (e) => {
+		const formData = getFormData(e);
+		appStore.register(formData.email, formData.password).then(res => console.log(res));
+		props.history.push('/')
+	}
+
 
 	return (
 		<>
@@ -12,28 +20,16 @@ export default function SignUpWindow() {
 					<Modal.Title>Регистрация</Modal.Title>
 				</Modal.Header>
 				<Container>
-					<Form>
+					<Form onSubmit={onRegisterHandler}>
 
 						<Form.Group as={Col} controlId="formGridEmail">
 							<Form.Label>Почта</Form.Label>
-							<Form.Control type="email" placeholder="Введите email" />
+							<Form.Control name="email" type="email" placeholder="Введите email" />
 						</Form.Group>
 
 						<Form.Group as={Col} controlId="formGridPassword">
 							<Form.Label>Пароль</Form.Label>
-							<Form.Control type="password" placeholder="Пароль" />
-						</Form.Group>
-
-
-						<Form.Group as={Col} controlId="formGridAddress1">
-							<Form.Label>Адрес</Form.Label>
-							<Form.Control placeholder="Проспект мира 14" />
-						</Form.Group>
-
-
-						<Form.Group as={Col} controlId="formGridCity">
-							<Form.Label>Город</Form.Label>
-							<Form.Control />
+							<Form.Control name="password" type="password" placeholder="Пароль" />
 						</Form.Group>
 
 						<div className="text-center"><Button variant="dark" type="submit">
@@ -46,3 +42,5 @@ export default function SignUpWindow() {
 		</>
 	)
 }
+
+export default withRouter(SignUpWindow);
