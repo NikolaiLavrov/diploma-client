@@ -6,14 +6,21 @@ import withRouter from "react-router-dom/es/withRouter";
 import appStore from "../store";
 const SignUpWindow = (props) => {
 
+	const [error, setError] = React.useState('')
+
 	const onRegisterHandler = (e) => {
+		e.preventDefault();
 		const formData = getFormData(e);
+		if(formData.password2 !== formData.password) {
+			return setError('qwe');
+		}
 		appStore.register(formData.email, formData.password).then(res => console.log(res));
 		props.history.push('/')
 	}
 
-
-
+	const onChangePass = () => {
+		setError('');
+	}
 
 	return (
 		<>
@@ -24,19 +31,24 @@ const SignUpWindow = (props) => {
 				<Container>
 					<Form style={{padding:'20px 0'}} onSubmit={onRegisterHandler}>
 
-						<Form.Group as={Col} controlId="formGridEmail">
+						<Form.Group as={Col}>
 							<Form.Label>Почта</Form.Label>
-							<Form.Control name="email" type="email" placeholder="Введите email" minLength="14" required/>
+							<Form.Control name="email" type="email" placeholder="Введите email" required/>
 						</Form.Group>
 
-						<Form.Group as={Col} controlId="formGridPassword">
+						<Form.Group as={Col}>
 							<Form.Label>Пароль</Form.Label>
-							<Form.Control name="password" id="pass1" type="password" placeholder="Пароль" minLength="6" required />
+							<Form.Control onChange={onChangePass} name="password" id="pass1" type="password" placeholder="Пароль" minLength="6" required />
 						</Form.Group>
 
-						<Form.Group as={Col} controlId="formGridPassword">
+						<Form.Group as={Col}>
 							<Form.Label>Подтвердите пароль</Form.Label>
-							<Form.Control name="password" id="pass2" type="password" placeholder="Введите пароль повторно" minLength="6" required/>
+							<Form.Control name="password2" id="pass2" type="password" placeholder="Введите пароль повторно" minLength="6" required/>
+						</Form.Group>
+
+
+						<Form.Group as={Col}>
+							<Form.Label style={{color: 'red'}}>{error? 'Пароли не совпадают!': ''}</Form.Label>
 						</Form.Group>
 
 						<div className="text-center mb-3"><Button variant="dark" type="submit">

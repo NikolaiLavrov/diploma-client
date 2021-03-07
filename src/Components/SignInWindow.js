@@ -7,11 +7,19 @@ import appStore from "../store";
 
 const SignInWindow = observer(withRouter((props) => {
 
+	const [error, setError] = React.useState('');
+
 	const onLoginHandler = (e) => {
 		e.preventDefault();
 		const formData = getFormData(e);
-		appStore.login(formData.email, formData.password);
-		props.history.push('/')
+		appStore.login(formData.email, formData.password)
+			.then(()=>	props.history.push('/')).catch(
+			()=>setError(true)
+		);
+	}
+
+	const onChangeHandler = () => {
+		setError(false);
 	}
 	
 	return (
@@ -22,13 +30,16 @@ const SignInWindow = observer(withRouter((props) => {
 				</Modal.Header>
 				<Container>
 					<Form style={{padding:'20px 0'}} onSubmit={onLoginHandler}>
-						<Form.Group as={Col} controlId="formGroupEmail">
+						<Form.Group as={Col}>
 							<Form.Label>Почта</Form.Label>
-							<Form.Control name="email" type="email" placeholder="Введите email" minLength="14" required/>
+							<Form.Control onChange={onChangeHandler} name="email" type="email" placeholder="Введите email" required/>
 						</Form.Group>
-						<Form.Group as={Col} controlId="formGroupPassword">
+						<Form.Group as={Col}>
 							<Form.Label>Пароль</Form.Label>
-							<Form.Control name="password" type="password" placeholder="Пароль" minLength="6" required/>
+							<Form.Control onChange={onChangeHandler}  name="password" type="password" placeholder="Пароль" minLength="6" required/>
+						</Form.Group>
+						<Form.Group as={Col}>
+							<Form.Label style={{color: 'red'}}>{error? 'Неправильный логин или пароль!':''}</Form.Label>
 						</Form.Group>
 						<div className="text-center mb-3" >
 							<Button variant="dark" type="submit">
