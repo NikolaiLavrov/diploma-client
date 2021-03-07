@@ -21,22 +21,26 @@ const SignInWindow = observer(withRouter((props) => {
 					<Modal.Title>Вход</Modal.Title>
 				</Modal.Header>
 				<Container>
-					<Form onSubmit={onLoginHandler}>
+					<Form style={{padding:'20px 0'}} onSubmit={onLoginHandler}>
 						<Form.Group as={Col} controlId="formGroupEmail">
 							<Form.Label>Почта</Form.Label>
-							<Form.Control name="email" type="email" placeholder="Введите email" />
+							<Form.Control name="email" type="email" placeholder="Введите email" minLength="14" required/>
 						</Form.Group>
 						<Form.Group as={Col} controlId="formGroupPassword">
 							<Form.Label>Пароль</Form.Label>
-							<Form.Control name="password" type="password" placeholder="Пароль" />
+							<Form.Control name="password" type="password" placeholder="Пароль" minLength="6" required/>
 						</Form.Group>
-						<div className="text-center">
+						<div className="text-center mb-3" >
 							<Button variant="dark" type="submit">
-							Подтвердить
+							Войти
 						</Button>
 						</div>
+						<div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', padding: '0 15px', fontSize: '13px'}}>
+							<div >Еще нет аккаунта?</div>
+							<div className="btn-reg" onClick={()=>props.history.push('/signup')}>Зарегистрироваться</div>
+						</div>
 					</Form>
-					<div>Еще нет аккаунта? <div className="page-link" onClick={()=>props.history.push('/signup')}>Регистрация</div></div>
+
 				</Container>
 			</Modal.Dialog>
 
