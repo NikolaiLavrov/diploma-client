@@ -19,57 +19,54 @@ export default withRouter(function MainBlock(props) {
 						<Col md={{ span: 1 }}>{ }</Col>
 						<Col>
 							<Form.Label>Имя:</Form.Label>
-							<Form.Control type="search" placeholder="Endpoint_name_1" />
+							<Form.Control as="select" defaultValue="endpoint_name_1">
+								<option>endpoint_name_1</option>
+								<option>...</option>
+							</Form.Control>
 							<Form.Label>Метод:</Form.Label>
-							<Form.Control type="search" placeholder="POST" />
+							<Form.Control as="select" defaultValue="POST">
+								<option>POST</option>
+								<option>...</option>
+							</Form.Control>
 							<Form.Label>Схема запросов:<div className="btn_plus"><PlusButton2 /></div></Form.Label>
 							<Row>
 								<Col>
-									<Form.Control as="select" defaultValue="Выбрать...">
-										<option>Выбрать...</option>
-										<option>...</option>
-									</Form.Control>
+									<Form.Control type="search" placeholder="Key" />
 								</Col>
 								<div className="line_middle"><HorizontalLine /></div>
 								<Col>
-									<Form.Control as="select" defaultValue="Выбрать...">
-										<option>Выбрать...</option>
+									<Form.Control as="select" defaultValue="Value type">
+										<option>Value type</option>
 										<option>...</option>
 									</Form.Control>
 								</Col>
 							</Row>
 							<Row>
 								<Col>
-									<Form.Control as="select" defaultValue="Выбрать...">
-										<option>Выбрать...</option>
-										<option>...</option>
-									</Form.Control>
+									<Form.Control type="search" placeholder="Key" />
 								</Col>
 								<div className="line_middle"><HorizontalLine /></div>
 								<Col>
-									<Form.Control as="select" defaultValue="Выбрать...">
-										<option>Выбрать...</option>
+									<Form.Control as="select" defaultValue="Value type">
+										<option>Value type</option>
 										<option>...</option>
 									</Form.Control>
 								</Col>
 							</Row>
 							<Row>
 								<Col>
-									<Form.Control as="select" defaultValue="Выбрать...">
-										<option>Выбрать...</option>
-										<option>...</option>
-									</Form.Control>
+									<Form.Control type="search" placeholder="Key" />
 								</Col>
 								<div className="line_middle"><HorizontalLine /></div>
 								<Col>
-									<Form.Control as="select" defaultValue="Выбрать...">
-										<option>Выбрать...</option>
+									<Form.Control as="select" defaultValue="Value type">
+										<option>Value type</option>
 										<option>...</option>
 									</Form.Control>
 								</Col>
 							</Row>
 							<div className="btn_edit"><Button variant="dark">Изменить</Button>{' '}</div>
-							<div className="generate_link text-center"><Nav.Link href="#home">http://kolyadiplom.com/IDINBD</Nav.Link></div>
+							<div className="generate_link text-center"><Nav.Link href="#home">https://squrrelrest.ml/IDINBD</Nav.Link></div>
 
 						</Col>
 					</Row>

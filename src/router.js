@@ -32,8 +32,8 @@ export const BaseRouter = () => {
                 <CustomNavBar/>
                 <div>
                     <Route exact path="/" component={MainPage}/>
-                    <Route path="/api" component={()=><MainBlock endpoints={[{placeholder: 'qwe'}]}/>}/>
-                    <Route path="/catalog" component={()=><CatalogBlock items={[{title: "qwe", description: 'qwe'}]}/>}/>
+                    <Route path="/api" component={()=><MainBlock endpoints={[{placeholder: 'endpoint_name_1'}]}/>}/>
+                    <Route path="/catalog" component={()=><CatalogBlock items={[{title: "Карточка", description: 'Описание карточки'}]}/>}/>
                 </div>
             </CheckAuth>
         </Router>

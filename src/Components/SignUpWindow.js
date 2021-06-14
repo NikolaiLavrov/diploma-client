@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
-import { Form, Col, Button, Modal } from "react-bootstrap";
+import { Form, Col, Button, Modal} from "react-bootstrap";
 import {getFormData} from "../utils/getFormData";
 import withRouter from "react-router-dom/es/withRouter";
 import appStore from "../store";
@@ -29,8 +29,22 @@ const SignUpWindow = (props) => {
 					<Modal.Title>Регистрация</Modal.Title>
 				</Modal.Header>
 				<Container>
+
 					<Form style={{padding:'20px 0'}} onSubmit={onRegisterHandler}>
 
+						<Form.Group as={Col}>
+							<Form.Label>Имя</Form.Label>
+							<Form.Control type="text" placeholder="Введите ваше имя" required/>
+						</Form.Group>
+						<Form.Group as={Col}>
+							<Form.Label>Фамилия</Form.Label>
+							<Form.Control type="text" placeholder="Введите вашу фамилию" required/>
+						</Form.Group>
+
+						<Form.Group as={Col}>
+							<Form.Label>Логин</Form.Label>
+							<Form.Control type="text" placeholder="Введите логин" minLength="5" required/>
+						</Form.Group>
 						<Form.Group as={Col}>
 							<Form.Label>Почта</Form.Label>
 							<Form.Control name="email" type="email" placeholder="Введите email" required/>
