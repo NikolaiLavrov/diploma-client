@@ -1,0 +1,95 @@
+.dataflow {
+    height: calc(100vh - 100px);
+    display: flex;
+}
+
+.dataflow__blocks-menu {
+    position: relative;
+    margin: 0 0 0 12px ;
+    padding: 4px;
+    height: 100%;
+    width: 300px;
+    /*background: #dbdbdb;*/
+}
+
+.dataflow__workspace__toolbar {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.dataflow__workspace {
+    position: relative;
+    flex: 1;
+}
+
+.dataflow__workspace__diagram {
+    height: 100%;
+    margin: 0 12px;
+}
+.dataflow__blocks-menu__search-list__item {
+    cursor: grab;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    margin: 4px 0;
+    background: #ffffff;
+}
+
+.dataflow__blocks-menu__search-list {
+    margin-top: 4px;
+}
+
+.GoBackButton{
+
+    background: #ffffff;
+    position: absolute;
+    left: 8px;
+    bottom: 8px;
+    width: 284px;
+    text-align: center;
+    padding: 12px;
+    border: grey 2px solid;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: transform .1s ease-in;
+    margin-bottom: 2px;
+    font-weight: 600;
+}
+
+.GoBackButton:hover{
+    transform: scale(1.02);
+}
+
+.Resolvers{
+    display: flex;
+    flex-direction: column;
+}
+
+.FunctionSelector{
+    width: 300px;
+    margin-left: 16px;
+}
+
+.bi.bi-diagram-node.bi-diagram-node-default > div > div:first-child{
+    cursor: grab;
+
+}
+/*.Resolvers > * {*/
+/*    width: ;*/
+/*}*/
+
+.FunctionName{
+    position: absolute;
+    left: 20px;
+    top: 6px;
+    z-index: 100;
+    font-size: large;
+    font-weight: 600;
+    color: grey;
+}
+
+.react-responsive-modal-modal {
+ max-width: inherit !important;
+ display: block !important;
+}

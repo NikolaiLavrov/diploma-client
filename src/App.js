@@ -6,6 +6,7 @@ import NaviBar from './Components/Navibar';
 import MainBlock from './Components/Mainblock';
 import CatalogBlock from './Components/Catalog';
 import {BaseRouter} from "./router";
+import 'antd/dist/antd.css'
 
 
 function App() {
